@@ -3,13 +3,19 @@ import { Text } from "@lmedui/common-ui";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import { Generator } from "./components/Generator/Generator";
 
 function App() {
   const [count, setCount] = useState(0);
+  // const state = useState(0);
+  // state[0] <- state
+  // state[1] <- callback(newState)
 
   return (
     <>
       <div>
+        <Generator />
+
         <Text>Hello world!</Text>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
