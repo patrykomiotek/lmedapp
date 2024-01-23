@@ -1,15 +1,29 @@
 import { useEffect, useState } from "react";
 import { ProductDto, fetchProducts } from "./services";
 
-type S = {
-  data: ProductDto[] | undefined;
-  isLoading: boolean;
-  isError: boolean;
-};
+type S =
+  | {
+      // pending
+      data: undefined;
+      isLoading: true;
+      isError: false;
+    }
+  | {
+      // resolved
+      data: ProductDto[];
+      isLoading: false;
+      isError: false;
+    }
+  | {
+      // rejected
+      data: undefined;
+      isLoading: false;
+      isError: true;
+    };
 
 export const useProducts = () => {
   const [state, setState] = useState<S>({
-    data: [],
+    data: undefined,
     isLoading: true,
     isError: false,
   });
