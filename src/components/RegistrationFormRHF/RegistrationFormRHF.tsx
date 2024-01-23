@@ -1,27 +1,43 @@
 import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../../ui/Input";
-import { FormState } from "../../types/FormState";
+
+import {
+  CreateUserDto,
+  validationSchema,
+} from "../../types/dtos/CreateUserDto";
 
 type Props = {
-  onSubmit: SubmitHandler<FormState>;
-  data?: Partial<FormState>;
+  onSubmit: SubmitHandler<CreateUserDto>;
+  data?: Partial<CreateUserDto>;
 };
 
 export const RegistrationFormRHF = ({ onSubmit, data }: Props) => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
-  } = useForm<FormState>();
+  } = useForm<CreateUserDto>({
+    resolver: zodResolver(validationSchema),
+    values: {
+      email: data?.email || "",
+      password: data?.password || "",
+      language: data?.language || "",
+    },
+  });
+
+  const watchedField = watch("language");
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="mt-4">
       <Input
         {...register("email")}
         label="E-mail"
         id="email"
         type="email"
         defaultValue={data?.email}
+        error={errors.email}
       />
       <Input
         {...register("password", { required: true })}
@@ -30,8 +46,13 @@ export const RegistrationFormRHF = ({ onSubmit, data }: Props) => {
         type="password"
         error={errors.password}
       />
-      <Input {...register("language")} label="Language" id="language" />
-
+      <Input
+        {...register("language")}
+        label="Language"
+        id="language"
+        error={errors.language}
+      />
+      <p>{watchedField}</p>
       <div>
         <button type="submit">Submit</button>
       </div>

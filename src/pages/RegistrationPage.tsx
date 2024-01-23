@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { RegistrationFormRefs } from "../components/RegistrationFormRefs";
-import { FormState } from "../types/FormState";
 import { RegistrationFormRHF } from "../components/RegistrationFormRHF";
 import { SubmitHandler } from "react-hook-form";
+import { CreateUserDto } from "../types/dtos/CreateUserDto";
 
 export const RegistrationPage = () => {
   const [step, setStep] = useState<number>(1); // 1, 2, 3
 
-  const handleSubmit: SubmitHandler<FormState> = (data) => {
+  const handleSubmit: SubmitHandler<CreateUserDto> = (data) => {
     console.log({ data });
   };
 
@@ -19,7 +19,10 @@ export const RegistrationPage = () => {
 
     // }
     return (
-      <RegistrationFormRHF onSubmit={handleSubmit} />
+      <RegistrationFormRHF
+        data={{ email: "patryk@wp.pl" }}
+        onSubmit={handleSubmit}
+      />
       // <RegistrationFormRefs
       //   data={{ email: "patryk@wp.pl" }}
       //   onSubmit={handleSubmit}
