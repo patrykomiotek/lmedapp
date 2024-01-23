@@ -1,14 +1,5 @@
 import { useEffect, useState } from "react";
-import { api } from "../../config/api";
-
-type ProductDto = {
-  id: string;
-  fields: {
-    title: string;
-    description: string;
-    price: number;
-  };
-};
+import { ProductDto, fetchProducts } from "./services";
 
 export const ProductsList = () => {
   const [products, setProducts] = useState<ProductDto[]>([]);
@@ -18,11 +9,11 @@ export const ProductsList = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await api.get("/products");
+        const response = await fetchProducts();
 
         setProducts(response.data.records);
         setIsLoading(false);
-      } catch {
+      } catch (e) {
         // error
         setIsError(true);
       }
