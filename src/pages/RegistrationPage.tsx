@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { RegistrationFormRefs } from "../components/RegistrationFormRefs";
 import { FormState } from "../types/FormState";
+import { RegistrationFormRHF } from "../components/RegistrationFormRHF";
+import { SubmitHandler } from "react-hook-form";
 
 export const RegistrationPage = () => {
   const [step, setStep] = useState<number>(1); // 1, 2, 3
-  const handleSubmit = (data: FormState) => {
+
+  const handleSubmit: SubmitHandler<FormState> = (data) => {
     console.log({ data });
   };
 
@@ -16,10 +19,11 @@ export const RegistrationPage = () => {
 
     // }
     return (
-      <RegistrationFormRefs
-        data={{ email: "patryk@wp.pl" }}
-        onSubmit={handleSubmit}
-      />
+      <RegistrationFormRHF onSubmit={handleSubmit} />
+      // <RegistrationFormRefs
+      //   data={{ email: "patryk@wp.pl" }}
+      //   onSubmit={handleSubmit}
+      // />
     );
   };
 
