@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-
-const TOKEN =
-  "patbOoitoFRwwRPkZ.60487b09a6d89b41d77926048fdfbeb4910fd66d559440fbf1b3d91d40d1a8fb";
+import { api } from "../../config/api";
 
 type ProductDto = {
   id: string;
@@ -19,15 +16,7 @@ export const ProductsList = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await axios.get(
-          "https://api.airtable.com/v0/appHBgV8KCoqcryWu/products",
-          {
-            headers: {
-              Authorization: `Bearer ${TOKEN}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
+        const response = await api.get("/products");
 
         setProducts(response.data.records);
       } catch {
