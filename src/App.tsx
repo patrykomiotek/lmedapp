@@ -4,6 +4,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { Generator } from "./components/Generator/Generator";
+import { RegistrationFormState } from "./components/RegistrationFormState";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -14,6 +15,7 @@ function App() {
   return (
     <>
       <div>
+        <RegistrationFormState />
         <Generator />
 
         <Text>Hello world!</Text>
