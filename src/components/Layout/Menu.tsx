@@ -7,9 +7,7 @@ export const Menu = () => {
         <li className="mr-4">
           <NavLink
             to="/"
-            className={({ isActive, isPending }) =>
-              isActive ? "text-red-400" : ""
-            }
+            className={({ isActive }) => (isActive ? "text-red-400" : "")}
           >
             Home
           </NavLink>
@@ -17,9 +15,7 @@ export const Menu = () => {
         <li className="mr-4">
           <NavLink
             to="/products"
-            className={({ isActive, isPending }) =>
-              isActive ? "text-red-400" : ""
-            }
+            className={({ isActive }) => (isActive ? "text-red-400" : "")}
           >
             Products
           </NavLink>
@@ -27,9 +23,7 @@ export const Menu = () => {
         <li className="mr-4">
           <NavLink
             to="/registration"
-            className={({ isActive, isPending }) =>
-              isActive ? "text-red-400" : ""
-            }
+            className={({ isActive }) => (isActive ? "text-red-400" : "")}
           >
             Registration
           </NavLink>
@@ -37,9 +31,7 @@ export const Menu = () => {
         <li className="mr-4">
           <NavLink
             to="/contact"
-            className={({ isActive, isPending }) =>
-              isActive ? "text-red-400" : ""
-            }
+            className={({ isActive }) => (isActive ? "text-red-400" : "")}
           >
             Contact
           </NavLink>

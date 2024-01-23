@@ -30,6 +30,7 @@ export const useApi = <T>(fetcher: () => Promise<T>) => {
   });
   const { data, isLoading, isError } = state;
 
+  // TODO: cancelation
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -51,7 +52,7 @@ export const useApi = <T>(fetcher: () => Promise<T>) => {
     };
 
     loadData();
-  }, []);
+  }, [fetcher]);
 
   return { data, isLoading, isError };
 };
