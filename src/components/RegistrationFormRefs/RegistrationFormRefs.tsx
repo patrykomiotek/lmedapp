@@ -1,4 +1,5 @@
-import { ChangeEventHandler, FormEventHandler, useRef } from "react";
+import { FormEventHandler, useRef } from "react";
+import { Input } from "../../ui/Input";
 
 type FormState = {
   email: string;
@@ -18,6 +19,8 @@ export const RegistrationFormRefs = () => {
       if (passwordRef.current.value === "") {
         passwordRef.current.style.color = "#f00";
         passwordRef.current.style.border = "#f00 1px solid";
+        // passwordRef.current.classList.add()
+        // passwordRef.current.classList.remove()
       }
     }
 
@@ -26,24 +29,16 @@ export const RegistrationFormRefs = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="mb-2">
-        <label htmlFor="email" className="mr-2">
-          E-mail
-        </label>
-        <input ref={emailRef} id="email" type="email" />
-      </div>
-      <div className="mb-2">
-        <label htmlFor="password" className="mr-2">
-          Password
-        </label>
-        <input ref={passwordRef} id="password" type="password" />
-      </div>
-      <div className="mb-2">
-        <label htmlFor="language" className="mr-2">
-          Language
-        </label>
-        <input ref={languageRef} id="language" type="text" />
-      </div>
+      <Input
+        ref={emailRef}
+        label="E-mail"
+        id="email"
+        type="email"
+        defaultValue="patryk@wp.pl"
+      />
+      <Input ref={passwordRef} label="Password" id="password" type="password" />
+      <Input ref={languageRef} label="Language" id="language" />
+
       <div>
         <button type="submit">Submit</button>
       </div>

@@ -1,4 +1,5 @@
-import { ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler, FormEventHandler, useState } from "react";
+import { Input } from "../../ui/Input";
 
 type FormState = {
   email: string;
@@ -25,31 +26,28 @@ export const RegistrationFormState = () => {
 
   const { email, language, password } = formState;
 
+  const handleSubmit: FormEventHandler = (event) => {
+    event.preventDefault();
+
+    console.log({ email });
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="mb-2">
         <p>
           E-mail: {email}, password: {password}
         </p>
       </div>
-      <div className="mb-2">
-        <label htmlFor="email" className="mr-2">
-          E-mail
-        </label>
-        <input id="email" type="email" value={email} onChange={handleChange} />
-      </div>
-      <div className="mb-2">
-        <label htmlFor="password" className="mr-2">
-          Password
-        </label>
-        <input id="password" type="password" onChange={handleChange} />
-      </div>
-      <div className="mb-2">
-        <label htmlFor="language" className="mr-2">
-          Language
-        </label>
-        <input id="language" type="text" onChange={handleChange} />
-      </div>
+      <Input
+        label="E-mail"
+        id="email"
+        type="email"
+        value={email}
+        onChange={handleChange}
+      />
+      <Input label="Password" id="password" type="password" />
+      <Input label="Language" id="language" />
       <div>
         <button type="submit">Submit</button>
       </div>
