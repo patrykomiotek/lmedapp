@@ -17,6 +17,11 @@ type ProductsResponse = {
   records: ProductDto[];
 };
 
-export const fetchProducts = () => {
-  return api.get<ProductsResponse>("/products");
+export const fetchProducts = async () => {
+  try {
+    const response = await api.get<ProductsResponse>("/products");
+    return response.data.records;
+  } catch {
+    return [];
+  }
 };

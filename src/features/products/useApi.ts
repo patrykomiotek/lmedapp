@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { ProductDto, fetchProducts } from "./services";
 
-type S =
+type S<T> =
   | {
       // pending
       data: undefined;
@@ -10,7 +9,7 @@ type S =
     }
   | {
       // resolved
-      data: ProductDto[];
+      data: T;
       isLoading: false;
       isError: false;
     }
@@ -21,8 +20,10 @@ type S =
       isError: true;
     };
 
-export const useProducts = () => {
-  const [state, setState] = useState<S>({
+//
+
+export const useApi = <T>(fetcher: () => Promise<T>) => {
+  const [state, setState] = useState<S<T>>({
     data: undefined,
     isLoading: true,
     isError: false,
@@ -32,10 +33,10 @@ export const useProducts = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await fetchProducts();
+        const response = await fetcher();
 
         setState({
-          data: response.data.records,
+          data: response,
           isLoading: false,
           isError: false,
         });

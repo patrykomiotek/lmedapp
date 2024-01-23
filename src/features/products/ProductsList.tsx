@@ -1,7 +1,12 @@
-import { useProducts } from "./useProducts";
+import { fetchProducts, type ProductDto } from "./services";
+import { useApi } from "./useApi";
 
 export const ProductsList = () => {
-  const { data: products, isLoading, isError } = useProducts();
+  const {
+    data: products,
+    isLoading,
+    isError,
+  } = useApi<ProductDto[]>(fetchProducts);
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -15,11 +20,12 @@ export const ProductsList = () => {
     <div>
       <h3>Products</h3>
       <ul>
-        {products.map((elem) => (
-          <li key={elem.id}>
-            {elem.fields.title} {elem.fields.price}zł
-          </li>
-        ))}
+        {products &&
+          products.map((elem) => (
+            <li key={elem.id}>
+              {elem.fields.title} {elem.fields.price}zł
+            </li>
+          ))}
       </ul>
     </div>
   );
