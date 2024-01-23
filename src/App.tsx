@@ -8,6 +8,35 @@ import { RegistrationFormState } from "./components/RegistrationFormState";
 import { RegistrationFormRefs } from "./components/RegistrationFormRefs";
 import { MagicButton } from "./ui/MagicButton";
 import { RegistrationPage } from "./pages/RegistrationPage";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { HomePage } from "./pages/HomePage";
+import { ContactPage } from "./pages/ContactPage";
+import { Layout } from "./components/Layout/Layout";
+
+// routes.ts (config map)
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    // loader: rootLoader,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+        // loader: teamLoader,
+      },
+      {
+        path: "/registration",
+        element: <RegistrationPage />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
+      },
+    ],
+  },
+]);
 
 function App() {
   const [count, setCount] = useState(0);
@@ -35,20 +64,20 @@ function App() {
   };
 
   return (
-    <>
-      <div>
-        <RegistrationPage />
-        {/* <MagicButton
+    <div>
+      <RouterProvider router={router} />
+
+      {/* <RegistrationPage /> */}
+      {/* <MagicButton
           ref={magicRef}
           label="Click me"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         /> */}
-        {/* <RegistrationFormRefs /> */}
-        {/* <RegistrationFormState /> */}
-        {/* <Generator /> */}
-      </div>
-    </>
+      {/* <RegistrationFormRefs /> */}
+      {/* <RegistrationFormState /> */}
+      {/* <Generator /> */}
+    </div>
   );
 }
 
