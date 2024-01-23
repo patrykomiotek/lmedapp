@@ -16,6 +16,16 @@ export const Menu = () => {
         </li>
         <li className="mr-4">
           <NavLink
+            to="/products"
+            className={({ isActive, isPending }) =>
+              isActive ? "text-red-400" : ""
+            }
+          >
+            Products
+          </NavLink>
+        </li>
+        <li className="mr-4">
+          <NavLink
             to="/registration"
             className={({ isActive, isPending }) =>
               isActive ? "text-red-400" : ""

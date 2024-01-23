@@ -12,6 +12,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { ContactPage } from "./pages/ContactPage";
 import { Layout } from "./components/Layout/Layout";
+import { ProductsPage } from "./pages/ProductsPage";
 
 // routes.ts (config map)
 
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
         path: "/",
         element: <HomePage />,
         // loader: teamLoader,
+      },
+      {
+        path: "/products",
+        element: <ProductsPage />,
       },
       {
         path: "/registration",
