@@ -7,6 +7,7 @@ import { Generator } from "./components/Generator/Generator";
 import { RegistrationFormState } from "./components/RegistrationFormState";
 import { RegistrationFormRefs } from "./components/RegistrationFormRefs";
 import { MagicButton } from "./ui/MagicButton";
+import { RegistrationPage } from "./pages/RegistrationPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -36,36 +37,17 @@ function App() {
   return (
     <>
       <div>
-        <MagicButton
+        <RegistrationPage />
+        {/* <MagicButton
           ref={magicRef}
           label="Click me"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-        />
-        <RegistrationFormRefs />
-        <RegistrationFormState />
-        <Generator />
-
-        <Text>Hello world!</Text>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        /> */}
+        {/* <RegistrationFormRefs /> */}
+        {/* <RegistrationFormState /> */}
+        {/* <Generator /> */}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   );
 }

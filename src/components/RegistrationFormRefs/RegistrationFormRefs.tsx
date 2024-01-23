@@ -7,7 +7,12 @@ type FormState = {
   language: string;
 };
 
-export const RegistrationFormRefs = () => {
+type Props = {
+  onSubmit: (data: FormState) => void;
+  data?: Partial<FormState>;
+};
+
+export const RegistrationFormRefs = ({ onSubmit, data }: Props) => {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const languageRef = useRef<HTMLInputElement>(null);
@@ -18,17 +23,12 @@ export const RegistrationFormRefs = () => {
 
   const handleSubmit: FormEventHandler = (event) => {
     event.preventDefault();
-
-    if (passwordRef.current) {
-      if (passwordRef.current.value === "") {
-        passwordRef.current.style.color = "#f00";
-        passwordRef.current.style.border = "#f00 1px solid";
-        // passwordRef.current.classList.add()
-        // passwordRef.current.classList.remove()
-      }
-    }
-
-    console.log({ email: emailRef.current?.value });
+    const formData: FormState = {
+      email: emailRef.current?.value || "",
+      password: passwordRef.current?.value || "",
+      language: languageRef.current?.value || "",
+    };
+    onSubmit(formData);
   };
 
   return (
@@ -38,7 +38,7 @@ export const RegistrationFormRefs = () => {
         label="E-mail"
         id="email"
         type="email"
-        defaultValue="patryk@wp.pl"
+        defaultValue={data?.email}
       />
       <Input ref={passwordRef} label="Password" id="password" type="password" />
       <Input ref={languageRef} label="Language" id="language" />
