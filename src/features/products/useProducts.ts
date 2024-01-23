@@ -1,21 +1,37 @@
 import { useEffect, useState } from "react";
 import { ProductDto, fetchProducts } from "./services";
 
+type S = {
+  data: ProductDto[] | undefined;
+  isLoading: boolean;
+  isError: boolean;
+};
+
 export const useProducts = () => {
-  const [data, setData] = useState<ProductDto[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
+  const [state, setState] = useState<S>({
+    data: [],
+    isLoading: true,
+    isError: false,
+  });
+  const { data, isLoading, isError } = state;
 
   useEffect(() => {
     const loadData = async () => {
       try {
         const response = await fetchProducts();
 
-        setData(response.data.records);
-        setIsLoading(false);
+        setState({
+          data: response.data.records,
+          isLoading: false,
+          isError: false,
+        });
       } catch (e) {
         // error
-        setIsError(true);
+        setState({
+          data: undefined,
+          isLoading: false,
+          isError: true,
+        });
       }
     };
 
