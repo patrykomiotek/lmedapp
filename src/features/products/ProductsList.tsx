@@ -17,18 +17,25 @@ export const ProductsList = () => {
   const [products, setProducts] = useState<ProductDto[]>([]);
 
   useEffect(() => {
-    axios
-      .get("https://api.airtable.com/v0/appHBgV8KCoqcryWu/products", {
-        headers: {
-          Authorization: `Bearer ${TOKEN}`,
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        // schema.safeParse
-        console.log(response.data);
+    const loadData = async () => {
+      try {
+        const response = await axios.get(
+          "https://api.airtable.com/v0/appHBgV8KCoqcryWu/products",
+          {
+            headers: {
+              Authorization: `Bearer ${TOKEN}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
         setProducts(response.data.records);
-      });
+      } catch {
+        // error
+      }
+    };
+
+    loadData();
   }, []);
 
   return (
