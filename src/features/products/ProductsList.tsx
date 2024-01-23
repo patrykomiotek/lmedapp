@@ -12,6 +12,8 @@ type ProductDto = {
 
 export const ProductsList = () => {
   const [products, setProducts] = useState<ProductDto[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     const loadData = async () => {
@@ -19,13 +21,23 @@ export const ProductsList = () => {
         const response = await api.get("/products");
 
         setProducts(response.data.records);
+        setIsLoading(false);
       } catch {
         // error
+        setIsError(true);
       }
     };
 
     loadData();
   }, []);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Error!</p>;
+  }
 
   return (
     <div>
