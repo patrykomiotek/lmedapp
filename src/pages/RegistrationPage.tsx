@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { RegistrationFormRefs } from "../components/RegistrationFormRefs";
-
-type FormState = {
-  email: string;
-  password: string;
-  language: string;
-};
+import { FormState } from "../types/FormState";
 
 export const RegistrationPage = () => {
   const [step, setStep] = useState<number>(1); // 1, 2, 3

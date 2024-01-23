@@ -1,11 +1,6 @@
 import { FormEventHandler, useRef, useEffect } from "react";
 import { Input } from "../../ui/Input";
-
-type FormState = {
-  email: string;
-  password: string;
-  language: string;
-};
+import { FormState } from "../../types/FormState";
 
 type Props = {
   onSubmit: (data: FormState) => void;
