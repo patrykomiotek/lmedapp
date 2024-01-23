@@ -1,4 +1,4 @@
-import { FormEventHandler, useRef } from "react";
+import { FormEventHandler, useRef, useEffect } from "react";
 import { Input } from "../../ui/Input";
 
 type FormState = {
@@ -11,6 +11,10 @@ export const RegistrationFormRefs = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const languageRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    emailRef.current?.focus();
+  }, []); // [] - mount
 
   const handleSubmit: FormEventHandler = (event) => {
     event.preventDefault();

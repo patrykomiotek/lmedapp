@@ -1,4 +1,9 @@
-import { ChangeEventHandler, FormEventHandler, useState } from "react";
+import {
+  ChangeEventHandler,
+  FormEventHandler,
+  useEffect,
+  useState,
+} from "react";
 import { Input } from "../../ui/Input";
 
 type FormState = {
@@ -16,6 +21,14 @@ export const RegistrationFormState = () => {
     password: "",
     language: "",
   });
+
+  useEffect(() => {
+    // body
+
+    return () => {
+      // unmount
+    };
+  }, [formState.email]); // [] - mount & update
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     const value = event.target.value;
