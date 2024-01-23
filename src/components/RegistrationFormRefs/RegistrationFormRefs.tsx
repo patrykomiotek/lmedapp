@@ -1,4 +1,4 @@
-import { ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler, FormEventHandler, useRef } from "react";
 
 type FormState = {
   email: string;
@@ -7,43 +7,42 @@ type FormState = {
 };
 
 export const RegistrationFormRefs = () => {
-  // const [email, setEmail] = useState<string>("patryk@wp.pl");
-  // const [password, setPassword] = useState<string>("");
-  // const [language, setLanguage] = useState<string>("");
-  const [formState, setFormState] = useState<FormState>({
-    email: "",
-    password: "",
-    language: "",
-  });
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const languageRef = useRef<HTMLInputElement>(null);
 
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    const value = event.target.value;
-    const id = event.target.id;
+  const handleSubmit: FormEventHandler = (event) => {
+    event.preventDefault();
 
-    setFormState({ ...formState, [id]: value });
+    if (passwordRef.current) {
+      if (passwordRef.current.value === "") {
+        passwordRef.current.style.color = "#f00";
+        passwordRef.current.style.border = "#f00 1px solid";
+      }
+    }
+
+    console.log({ email: emailRef.current?.value });
   };
 
-  const { email, language, password } = formState;
-
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="mb-2">
         <label htmlFor="email" className="mr-2">
           E-mail
         </label>
-        <input id="email" type="email" value={email} onChange={handleChange} />
+        <input ref={emailRef} id="email" type="email" />
       </div>
       <div className="mb-2">
         <label htmlFor="password" className="mr-2">
           Password
         </label>
-        <input id="password" type="password" onChange={handleChange} />
+        <input ref={passwordRef} id="password" type="password" />
       </div>
       <div className="mb-2">
         <label htmlFor="language" className="mr-2">
           Language
         </label>
-        <input id="language" type="text" onChange={handleChange} />
+        <input ref={languageRef} id="language" type="text" />
       </div>
       <div>
         <button type="submit">Submit</button>
