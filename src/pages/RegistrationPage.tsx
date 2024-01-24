@@ -3,12 +3,17 @@ import { RegistrationFormRefs } from "../components/RegistrationFormRefs";
 import { RegistrationFormRHF } from "../components/RegistrationFormRHF";
 import { SubmitHandler } from "react-hook-form";
 import { CreateUserDto } from "../types/dtos/CreateUserDto";
+import { useNavigate } from "react-router-dom";
 
 export const RegistrationPage = () => {
   const [step, setStep] = useState<number>(1); // 1, 2, 3
+  const navigate = useNavigate();
 
   const handleSubmit: SubmitHandler<CreateUserDto> = (data) => {
     console.log({ data });
+
+    // try { await registerUser(data); } catch { } -> services/users.ts
+    // navigate('/navigate/publicId')
   };
 
   // let Content: React.ReactNode = RegistrationFormRefs;
