@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+// React Context Hook Pattern
+import { createContext, useContext, useState } from "react";
 
 type AuthContextType = {
   isLogged: boolean;
@@ -7,12 +8,7 @@ type AuthContextType = {
   toggle: () => void;
 };
 
-export const AuthContext = createContext<AuthContextType>({
-  isLogged: false,
-  logIn: () => null,
-  logOut: () => null,
-  toggle: () => null,
-});
+export const AuthContext = createContext<AuthContextType | null>(null);
 
 const useAuth = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -26,6 +22,18 @@ const useAuth = () => {
 
 type Props = {
   children: React.ReactNode;
+};
+
+export const useAuthContext = () => {
+  const context = useContext(AuthContext);
+
+  if (!context) {
+    throw new Error(
+      "Oh no! Component should be placed inside AuthProvider component"
+    );
+  }
+
+  return context;
 };
 
 export const AuthProvider = ({ children }: Props) => {

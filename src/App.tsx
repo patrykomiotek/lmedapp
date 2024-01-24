@@ -15,6 +15,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { CreateProductPage } from "./pages/CreateProductPage";
 import { AuthContext, AuthProvider } from "./components/Auth/AuthContext";
 import { AuthPage } from "./pages/AuthPage";
+import { AuthCredentials } from "./components/Auth/AuthCredentials";
 
 // routes.ts (config map)
 
@@ -91,6 +92,9 @@ function App() {
         <AuthProvider>
           <RouterProvider router={router} />
         </AuthProvider>
+
+        {/* <AuthCredentials /> */}
+
         <ReactQueryDevtools initialIsOpen={true} />
       </QueryClientProvider>
 
