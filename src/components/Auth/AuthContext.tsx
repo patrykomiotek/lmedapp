@@ -1,5 +1,11 @@
-import { createContext } from "react";
+import { SetStateAction, Dispatch, createContext } from "react";
 
-export const AuthContext = createContext({
+type AuthContextType = {
+  isLogged: boolean;
+  setIsLogged: Dispatch<SetStateAction<boolean>>;
+};
+
+export const AuthContext = createContext<AuthContextType>({
   isLogged: false,
+  setIsLogged: () => null,
 });

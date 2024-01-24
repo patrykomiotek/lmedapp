@@ -58,8 +58,9 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const [count, setCount] = useState(0);
   const magicRef = useRef<HTMLButtonElement>(null);
+  const [isLogged, setIsLogged] = useState(false);
+
   // const state = useState(0);
   // state[0] <- state
   // state[1] <- callback(newState)
@@ -87,7 +88,9 @@ function App() {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
-        <AuthContext.Provider value={{ isLogged: true }}>
+        <AuthContext.Provider
+          value={{ isLogged: isLogged, setIsLogged: setIsLogged }}
+        >
           <RouterProvider router={router} />
         </AuthContext.Provider>
         <ReactQueryDevtools initialIsOpen={true} />
