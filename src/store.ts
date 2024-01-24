@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./features/CounterRedux/counterSlice";
+import basketReducer from "./features/products/basketSlice";
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    basket: basketReducer,
   },
 });
 
