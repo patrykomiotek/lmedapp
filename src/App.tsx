@@ -13,6 +13,8 @@ import { ProductDetails } from "./features/products/ProductDetails";
 import { ProductDetailsPage } from "./pages/ProductDetailsPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { CreateProductPage } from "./pages/CreateProductPage";
+import { AuthContext } from "./components/Auth/AuthContext";
+import { AuthPage } from "./pages/AuthPage";
 
 // routes.ts (config map)
 
@@ -42,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "/registration",
         element: <RegistrationPage />,
+      },
+      {
+        path: "/auth",
+        element: <AuthPage />,
       },
       {
         path: "/contact",
@@ -81,7 +87,9 @@ function App() {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
+        <AuthContext.Provider value={{ isLogged: true }}>
+          <RouterProvider router={router} />
+        </AuthContext.Provider>
         <ReactQueryDevtools initialIsOpen={true} />
       </QueryClientProvider>
 

@@ -30,6 +30,14 @@ export const Menu = () => {
         </li>
         <li className="mr-4">
           <NavLink
+            to="/auth"
+            className={({ isActive }) => (isActive ? "text-red-400" : "")}
+          >
+            Auth
+          </NavLink>
+        </li>
+        <li className="mr-4">
+          <NavLink
             to="/contact"
             className={({ isActive }) => (isActive ? "text-red-400" : "")}
           >
