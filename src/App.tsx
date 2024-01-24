@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { HelmetProvider } from "react-helmet-async";
 
 import "./App.css";
 import { RegistrationPage } from "./pages/RegistrationPage";
@@ -78,7 +79,7 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <div>
+    <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
         <ReactQueryDevtools initialIsOpen={true} />
@@ -94,7 +95,7 @@ function App() {
       {/* <RegistrationFormRefs /> */}
       {/* <RegistrationFormState /> */}
       {/* <Generator /> */}
-    </div>
+    </HelmetProvider>
   );
 }
 

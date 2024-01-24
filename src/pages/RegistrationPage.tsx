@@ -4,6 +4,7 @@ import { RegistrationFormRHF } from "../components/RegistrationFormRHF";
 import { SubmitHandler } from "react-hook-form";
 import { CreateUserDto } from "../types/dtos/CreateUserDto";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 export const RegistrationPage = () => {
   const [step, setStep] = useState<number>(1); // 1, 2, 3
@@ -37,6 +38,9 @@ export const RegistrationPage = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Registration page</title>
+      </Helmet>
       <h1>Registration page</h1>
       {step === 1 && renderFirstStep()}
     </div>
