@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { HelmetProvider } from "react-helmet-async";
 
-import "./App.css";
+// import "./App.css";
 import { RegistrationPage } from "./pages/RegistrationPage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
@@ -17,6 +17,7 @@ import { AuthContext, AuthProvider } from "./components/Auth/AuthContext";
 import { AuthPage } from "./pages/AuthPage";
 import { AuthCredentials } from "./components/Auth/AuthCredentials";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import { ThemeProvider } from "./components/Theme/ThemeContext";
 
 // routes.ts (config map)
 
@@ -92,25 +93,29 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <RouterProvider router={router} />
-        </AuthProvider>
-        <ReactQueryDevtools initialIsOpen={true} />
-      </QueryClientProvider>
+    <div className="dark:bg-slate-900 h-full w-full">
+      <HelmetProvider>
+        <QueryClientProvider client={queryClient}>
+          <AuthProvider>
+            <ThemeProvider>
+              <RouterProvider router={router} />
+            </ThemeProvider>
+          </AuthProvider>
+          <ReactQueryDevtools initialIsOpen={true} />
+        </QueryClientProvider>
 
-      {/* <RegistrationPage /> */}
-      {/* <MagicButton
+        {/* <RegistrationPage /> */}
+        {/* <MagicButton
           ref={magicRef}
           label="Click me"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         /> */}
-      {/* <RegistrationFormRefs /> */}
-      {/* <RegistrationFormState /> */}
-      {/* <Generator /> */}
-    </HelmetProvider>
+        {/* <RegistrationFormRefs /> */}
+        {/* <RegistrationFormState /> */}
+        {/* <Generator /> */}
+      </HelmetProvider>
+    </div>
   );
 }
 
