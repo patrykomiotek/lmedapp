@@ -1,12 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Text } from "@lmedui/common-ui";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { ReactQueryDevtools } from "react-query/devtools";
+
 import "./App.css";
-import { Generator } from "./components/Generator/Generator";
-import { RegistrationFormState } from "./components/RegistrationFormState";
-import { RegistrationFormRefs } from "./components/RegistrationFormRefs";
-import { MagicButton } from "./ui/MagicButton";
 import { RegistrationPage } from "./pages/RegistrationPage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
@@ -15,6 +10,7 @@ import { Layout } from "./components/Layout/Layout";
 import { ProductsPage } from "./pages/ProductsPage";
 import { ProductDetails } from "./features/products/ProductDetails";
 import { ProductDetailsPage } from "./pages/ProductDetailsPage";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 // routes.ts (config map)
 
@@ -74,9 +70,14 @@ function App() {
     }
   };
 
+  const queryClient = new QueryClient();
+
   return (
     <div>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <ReactQueryDevtools initialIsOpen={true} />
+      </QueryClientProvider>
 
       {/* <RegistrationPage /> */}
       {/* <MagicButton
