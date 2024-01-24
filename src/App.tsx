@@ -16,6 +16,7 @@ import { CreateProductPage } from "./pages/CreateProductPage";
 import { AuthContext, AuthProvider } from "./components/Auth/AuthContext";
 import { AuthPage } from "./pages/AuthPage";
 import { AuthCredentials } from "./components/Auth/AuthCredentials";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 // routes.ts (config map)
 
@@ -52,7 +53,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <ContactPage />,
+        element: (
+          <ProtectedRoute>
+            <ContactPage />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
@@ -60,7 +65,7 @@ const router = createBrowserRouter([
 
 function App() {
   const magicRef = useRef<HTMLButtonElement>(null);
-  const [isLogged, setIsLogged] = useState(false);
+  // const [isLogged, setIsLogged] = useState(false);
 
   // const state = useState(0);
   // state[0] <- state
@@ -92,9 +97,6 @@ function App() {
         <AuthProvider>
           <RouterProvider router={router} />
         </AuthProvider>
-
-        {/* <AuthCredentials /> */}
-
         <ReactQueryDevtools initialIsOpen={true} />
       </QueryClientProvider>
 
