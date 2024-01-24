@@ -12,8 +12,8 @@ export const RegistrationPage = () => {
   const handleSubmit: SubmitHandler<CreateUserDto> = (data) => {
     console.log({ data });
 
-    // try { await registerUser(data); } catch { } -> services/users.ts
-    // navigate('/navigate/publicId')
+    // try { await registerUser(data); } catch { } -> services/users.ts -> axios.post(endpoint, data)
+    // navigate('/navigate/:publicId')
   };
 
   // let Content: React.ReactNode = RegistrationFormRefs;

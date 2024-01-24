@@ -1,4 +1,5 @@
 import { api } from "../../config/api";
+import { CreateProductDto } from "../../types/dtos/CreateProductDto";
 
 // export const fetchProducts = async () => {
 //   return await api.get("/products");
@@ -38,4 +39,10 @@ export const fetchProduct = async (id: ProductDto["id"] | undefined) => {
   } catch {
     return {} as ProductDto;
   }
+};
+
+export const createProduct = async (data: CreateProductDto) => {
+  return api.post<ProductsResponse>("/products", {
+    records: [{ fields: { ...data } }],
+  });
 };

@@ -11,6 +11,7 @@ import { ProductsPage } from "./pages/ProductsPage";
 import { ProductDetails } from "./features/products/ProductDetails";
 import { ProductDetailsPage } from "./pages/ProductDetailsPage";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { CreateProductPage } from "./pages/CreateProductPage";
 
 // routes.ts (config map)
 
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <ProductsPage />,
+      },
+      {
+        path: "/products/create",
+        element: <CreateProductPage />,
       },
       {
         path: "/products/:id",
