@@ -52,7 +52,7 @@ export const useApi = <T>(fetcher: () => Promise<T>) => {
     };
 
     loadData();
-  }, [fetcher]);
+  }, []);
 
   return { data, isLoading, isError };
 };

@@ -10,6 +10,7 @@ export type ProductDto = {
     title: string;
     description: string;
     price: number;
+    created_at: Date;
   };
 };
 
@@ -23,5 +24,18 @@ export const fetchProducts = async () => {
     return response.data.records;
   } catch {
     return [];
+  }
+};
+
+export const fetchProduct = async (id: ProductDto["id"] | undefined) => {
+  if (!id) {
+    return {} as ProductDto;
+  }
+
+  try {
+    const response = await api.get<ProductDto>(`/products/${id}`);
+    return response.data;
+  } catch {
+    return {} as ProductDto;
   }
 };

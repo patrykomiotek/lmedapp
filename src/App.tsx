@@ -13,6 +13,8 @@ import { HomePage } from "./pages/HomePage";
 import { ContactPage } from "./pages/ContactPage";
 import { Layout } from "./components/Layout/Layout";
 import { ProductsPage } from "./pages/ProductsPage";
+import { ProductDetails } from "./features/products/ProductDetails";
+import { ProductDetailsPage } from "./pages/ProductDetailsPage";
 
 // routes.ts (config map)
 
@@ -30,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <ProductsPage />,
+      },
+      {
+        path: "/products/:id",
+        element: <ProductDetailsPage />,
       },
       {
         path: "/registration",

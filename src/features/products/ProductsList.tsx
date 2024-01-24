@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { fetchProducts, type ProductDto } from "./services";
 import { useApi } from "./useApi";
 
@@ -23,7 +24,9 @@ export const ProductsList = () => {
         {products &&
           products.map((elem) => (
             <li key={elem.id}>
-              {elem.fields.title} {elem.fields.price}zł
+              <Link to={`/products/${elem.id}`}>
+                {elem.fields.title} {elem.fields.price}zł
+              </Link>
             </li>
           ))}
       </ul>
