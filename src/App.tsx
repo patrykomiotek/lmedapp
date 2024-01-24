@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { HelmetProvider } from "react-helmet-async";
+import { store } from "./store";
+import { Provider } from "react-redux";
 
 // import "./App.css";
 import { RegistrationPage } from "./pages/RegistrationPage";
@@ -96,11 +98,13 @@ function App() {
     <div className="dark:bg-slate-900 h-full w-full">
       <HelmetProvider>
         <QueryClientProvider client={queryClient}>
-          <AuthProvider>
-            <ThemeProvider>
-              <RouterProvider router={router} />
-            </ThemeProvider>
-          </AuthProvider>
+          <Provider store={store}>
+            <AuthProvider>
+              <ThemeProvider>
+                <RouterProvider router={router} />
+              </ThemeProvider>
+            </AuthProvider>
+          </Provider>
           <ReactQueryDevtools initialIsOpen={true} />
         </QueryClientProvider>
 
