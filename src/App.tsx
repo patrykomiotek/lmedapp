@@ -13,7 +13,7 @@ import { ProductDetails } from "./features/products/ProductDetails";
 import { ProductDetailsPage } from "./pages/ProductDetailsPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { CreateProductPage } from "./pages/CreateProductPage";
-import { AuthContext } from "./components/Auth/AuthContext";
+import { AuthContext, AuthProvider } from "./components/Auth/AuthContext";
 import { AuthPage } from "./pages/AuthPage";
 
 // routes.ts (config map)
@@ -88,11 +88,9 @@ function App() {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
-        <AuthContext.Provider
-          value={{ isLogged: isLogged, setIsLogged: setIsLogged }}
-        >
+        <AuthProvider>
           <RouterProvider router={router} />
-        </AuthContext.Provider>
+        </AuthProvider>
         <ReactQueryDevtools initialIsOpen={true} />
       </QueryClientProvider>
 
