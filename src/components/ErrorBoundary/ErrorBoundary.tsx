@@ -25,7 +25,7 @@ export class ErrorBoundary extends Component<Props, State> {
     return { isError: true };
   }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+  componentDidCatch(_error: Error, _errorInfo: ErrorInfo): void {
     // send to logger
   }
 

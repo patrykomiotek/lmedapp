@@ -22,7 +22,7 @@ const ThemeContext = createContext<ThemeContextType | null>(null);
 export const getMode = () => {
   if (window.matchMedia) {
     const matchesLightMode = window.matchMedia(
-      "(prefers-color-scheme: light)"
+      "(prefers-color-scheme: dark)"
     ).matches;
     return matchesLightMode ? Theme.LIGHT : Theme.DARK;
   }

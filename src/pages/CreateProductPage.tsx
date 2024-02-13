@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { CreateProductForm } from "../features/products/CreateProductForm";
 import { createProduct } from "../features/products/services";
 import { CreateProductDto } from "../types/dtos/CreateProductDto";
+import { Header } from "../ui";
 
 export const CreateProductPage = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export const CreateProductPage = () => {
 
   return (
     <div>
-      <h1>Create Product</h1>
+      <Header>Create Product</Header>
       <CreateProductForm onSubmit={handleSubmit} />
     </div>
   );

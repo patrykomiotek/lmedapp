@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { CounterRedux } from "../features/CounterRedux";
 import { Generator } from "../components/Generator/Generator";
+import { Header } from "../ui/Header";
 
 export const HomePage = () => {
   return (
@@ -8,7 +9,7 @@ export const HomePage = () => {
       <Helmet>
         <title>{import.meta.env.VITE_APP_TITLE}</title>
       </Helmet>
-      <h1>Home</h1>
+      <Header>Home</Header>
       <Generator />
       <CounterRedux />
     </div>

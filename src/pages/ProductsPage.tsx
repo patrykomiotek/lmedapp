@@ -1,9 +1,10 @@
 import { ProductsList } from "../features/products/ProductsList";
+import { Header } from "../ui";
 
 export const ProductsPage = () => {
   return (
     <div>
-      <h1>Products</h1>
+      <Header>Products</Header>
       <ProductsList />
     </div>
   );

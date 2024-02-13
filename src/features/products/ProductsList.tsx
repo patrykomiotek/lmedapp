@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { fetchProducts, type ProductDto } from "./services";
-import { useApi } from "./useApi";
+// import { useApi } from "./useApi";
 import { useQuery } from "react-query";
 import { useDispatch } from "react-redux";
 import { add } from "../products/basketSlice";
+import { Header, Text } from "../../ui";
 
 export const ProductsList = () => {
   // const {
@@ -17,27 +18,26 @@ export const ProductsList = () => {
     isError,
     refetch,
   } = useQuery("products", fetchProducts, {
-    onSuccess: (data) => {
+    onSuccess: (_data) => {
       // dispatch(setProducts(data))
     },
   });
   const dispatch = useDispatch();
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Text>Loading...</Text>;
   }
 
   if (isError) {
-    return <p>Error!</p>;
+    return <Text>Error!</Text>;
   }
 
   return (
     <div>
-      <h3>Products</h3>
       <ul>
         {products &&
           products.map((elem) => (
-            <li key={elem.id}>
+            <li key={elem.id} className="dark:text-slate-300">
               <Link to={`/products/${elem.id}`}>
                 {elem.fields.title} {elem.fields.price}zł
               </Link>

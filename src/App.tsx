@@ -1,23 +1,21 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { HelmetProvider } from "react-helmet-async";
-import { store } from "./store";
 import { Provider } from "react-redux";
 
 // import "./App.css";
+import { store } from "./store";
 import { RegistrationPage } from "./pages/RegistrationPage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { HomePage } from "./pages/HomePage";
 import { ContactPage } from "./pages/ContactPage";
 import { Layout } from "./components/Layout/Layout";
 import { ProductsPage } from "./pages/ProductsPage";
-import { ProductDetails } from "./features/products/ProductDetails";
 import { ProductDetailsPage } from "./pages/ProductDetailsPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { CreateProductPage } from "./pages/CreateProductPage";
-import { AuthContext, AuthProvider } from "./components/Auth/AuthContext";
+import { AuthProvider } from "./components/Auth/AuthContext";
 import { AuthPage } from "./pages/AuthPage";
-import { AuthCredentials } from "./components/Auth/AuthCredentials";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { ThemeProvider } from "./components/Theme/ThemeContext";
 

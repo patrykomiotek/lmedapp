@@ -1,3 +1,4 @@
+import { Text, Button } from "../../ui";
 import { useAuthContext } from "./AuthContext";
 
 export const AuthCredentials = () => {
@@ -5,8 +6,8 @@ export const AuthCredentials = () => {
 
   return (
     <div>
-      <p>Is logged: {context.isLogged ? "YES" : "NO"}</p>
-      <button onClick={() => context.toggle()}>Toggle auth</button>
+      <Text>Is logged: {context.isLogged ? "YES" : "NO"}</Text>
+      <Button label="Toggle auth" onClick={() => context.toggle()} />
     </div>
   );
 };

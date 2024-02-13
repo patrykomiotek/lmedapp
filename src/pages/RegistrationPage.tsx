@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { RegistrationFormRefs } from "../components/RegistrationFormRefs";
-import { RegistrationFormRHF } from "../components/RegistrationFormRHF";
-import { SubmitHandler } from "react-hook-form";
-import { CreateUserDto } from "../types/dtos/CreateUserDto";
 import { useNavigate } from "react-router-dom";
+import { SubmitHandler } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
+
+// import { RegistrationFormRefs } from "../components/RegistrationFormRefs";
+import { RegistrationFormRHF } from "../components/RegistrationFormRHF";
+import { CreateUserDto } from "../types/dtos/CreateUserDto";
+import { Header } from "../ui";
 
 export const RegistrationPage = () => {
   const [step, setStep] = useState<number>(1); // 1, 2, 3
@@ -41,7 +43,7 @@ export const RegistrationPage = () => {
       <Helmet>
         <title>Registration page</title>
       </Helmet>
-      <h1>Registration page</h1>
+      <Header>Registration page</Header>
       {step === 1 && renderFirstStep()}
     </div>
   );

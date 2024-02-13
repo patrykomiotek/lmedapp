@@ -1,9 +1,10 @@
 import { AuthInfo } from "../components/Auth/AuthInfo";
+import { Header } from "../ui";
 
 export const AuthPage = () => {
   return (
     <div>
-      <h1>Auth</h1>
+      <Header>Auth</Header>
       <AuthInfo />
     </div>
   );

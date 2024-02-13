@@ -1,9 +1,10 @@
-import { Button } from "@lmedui/common-ui";
+import { KeyboardEventHandler, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
+// import { Button } from "@lmedui/common-ui";
+
+import { Button, Input, Text } from "../../ui";
 import type { RootState } from "../../store";
 import { increment, decrement, incrementByAmount } from "./counterSlice";
-import { KeyboardEventHandler, useRef } from "react";
-import { Input } from "../../ui/Input";
 
 export const CounterRedux = () => {
   const counterValue = useSelector((state: RootState) => state.counter.value);
@@ -18,14 +19,25 @@ export const CounterRedux = () => {
   };
 
   return (
-    <div>
-      <Button label="-" onClick={() => dispatch(decrement())} />
-      {counterValue}
-      <Button label="+" onClick={() => dispatch(increment())} />
+    <div className="mt-6">
+      <div className="flex">
+        <Button
+          className="mr-4"
+          label="-"
+          onClick={() => dispatch(decrement())}
+        />
+        <Text className="mr-4">{counterValue}</Text>
+        <Button
+          className="mr-4"
+          label="+"
+          onClick={() => dispatch(increment())}
+        />
+      </div>
       <Input
         label="Enter amount"
         ref={filedRef}
         type="number"
+        className="w-[150px]"
         onKeyDown={handleKeyDown}
       />
     </div>

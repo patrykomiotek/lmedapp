@@ -1,6 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "../../ui/Input";
+
+import { Input, Button } from "../../ui";
 
 import {
   CreateProductDto,
@@ -44,7 +45,7 @@ export const CreateProductForm = ({ onSubmit }: Props) => {
       />
 
       <div>
-        <button type="submit">Submit</button>
+        <Button type="submit" label="Submit" />
       </div>
     </form>
   );

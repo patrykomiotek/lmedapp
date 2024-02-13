@@ -4,9 +4,13 @@ import { Footer } from "./Footer";
 
 export const Layout = () => {
   return (
-    <div className="container">
+    <div className="container mx-auto">
       <Menu />
-      <Link to="/products/create">Create Product</Link>
+      <div className="my-4">
+        <Link to="/products/create" className="dark:text-slate-300">
+          Create Product
+        </Link>
+      </div>
       <Outlet />
       <Footer />
     </div>

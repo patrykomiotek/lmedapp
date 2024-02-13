@@ -6,13 +6,13 @@ import { selectBasketProductsCount } from "../../features/products/basketSlice";
 export const Menu = () => {
   const count = useSelector(selectBasketProductsCount);
   return (
-    <div className="pb-4 border-b-2 border-stone-900">
+    <div className="pb-4 border-b-2 border-stone-900  dark:border-slate-500">
       <ul className="flex mt-2">
         <li className="mr-4">
           <NavLink
             to="/"
             className={({ isActive }) =>
-              isActive ? "text-red-400 dark:text-white" : ""
+              isActive ? "text-red-400" : "dark:text-white"
             }
           >
             Home
@@ -61,7 +61,7 @@ export const Menu = () => {
         <li className="mr-4">
           <ThemeSwitcher />
         </li>
-        <li className="mr-4">{count}</li>
+        <li className="mr-4 dark:text-slate-300">{count}</li>
       </ul>
     </div>
   );

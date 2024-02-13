@@ -6,6 +6,7 @@ import {
   CreateUserDto,
   validationSchema,
 } from "../../types/dtos/CreateUserDto";
+import { Button } from "../../ui";
 
 type Props = {
   onSubmit: SubmitHandler<CreateUserDto>;
@@ -54,7 +55,7 @@ export const RegistrationFormRHF = ({ onSubmit, data }: Props) => {
       />
       <p>{watchedField}</p>
       <div>
-        <button type="submit">Submit</button>
+        <Button label="Submit" type="submit" />
       </div>
     </form>
   );
